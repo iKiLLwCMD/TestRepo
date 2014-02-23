@@ -1,0 +1,193 @@
+<Schema Namespace="VCVOnlineModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="VCVOnlineEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Assignments" EntityType="VCVOnlineModel.Assignment" />
+    <EntitySet Name="Classes" EntityType="VCVOnlineModel.Class" />
+    <EntitySet Name="Users" EntityType="VCVOnlineModel.User" />
+    <EntitySet Name="VCVs" EntityType="VCVOnlineModel.VCV" />
+    <AssociationSet Name="FK_Assignments_Classes" Association="VCVOnlineModel.FK_Assignments_Classes">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="Assignment" EntitySet="Assignments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VCVs_Assignments" Association="VCVOnlineModel.FK_VCVs_Assignments">
+      <End Role="Assignment" EntitySet="Assignments" />
+      <End Role="VCV" EntitySet="VCVs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_in_Classes" Association="VCVOnlineModel.FK_Users_in_Classes">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VCVs_Users" Association="VCVOnlineModel.FK_VCVs_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="VCV" EntitySet="VCVs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Class_Owner_By_Teacher" Association="VCVOnlineModel.FK_Class_Owner_By_Teacher">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Class" EntitySet="Classes" />
+    </AssociationSet>
+    <EntitySet Name="Countries" EntityType="VCVOnlineModel.Country" />
+    <EntitySet Name="Grades" EntityType="VCVOnlineModel.Grade" />
+    <AssociationSet Name="FK_Class_Country" Association="VCVOnlineModel.FK_Class_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Class" EntitySet="Classes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Class_Grade" Association="VCVOnlineModel.FK_Class_Grade">
+      <End Role="Grade" EntitySet="Grades" />
+      <End Role="Class" EntitySet="Classes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Assignment">
+    <Key>
+      <PropertyRef Name="AssignmentId" />
+    </Key>
+    <Property Name="AssignmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssignmentName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="AssignmentDueDate" Type="DateTime" Precision="3" />
+    <Property Name="ClassId" Type="Int32" />
+    <NavigationProperty Name="VCVsByAssignment" Relationship="VCVOnlineModel.FK_VCVs_Assignments" FromRole="Assignment" ToRole="VCV" />
+  </EntityType>
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="ClassId" />
+    </Key>
+    <Property Name="ClassId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClassName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="UserId" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Assignments" Relationship="VCVOnlineModel.FK_Assignments_Classes" FromRole="Class" ToRole="Assignment" />
+    <NavigationProperty Name="Users" Relationship="VCVOnlineModel.FK_Users_in_Classes" FromRole="Class" ToRole="User" />
+    <NavigationProperty Name="User" Relationship="VCVOnlineModel.FK_Class_Owner_By_Teacher" FromRole="Class" ToRole="User" />
+    <Property Type="Int32" Name="CountryId" />
+    <Property Type="Decimal" Name="PostalCode" Precision="4" Scale="0" />
+    <Property Type="Int32" Name="GradeId" />
+    <Property Type="String" Name="Subject" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Country" Relationship="VCVOnlineModel.FK_Class_Country" FromRole="Class" ToRole="Country" />
+    <NavigationProperty Name="Grade" Relationship="VCVOnlineModel.FK_Class_Grade" FromRole="Class" ToRole="Grade" />
+    <Property Type="String" Name="SchoolName" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="UserPassword" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="ClassId" Type="Int32" />
+    <NavigationProperty Name="Class" Relationship="VCVOnlineModel.FK_Users_in_Classes" FromRole="User" ToRole="Class" />
+    <NavigationProperty Name="VCVs" Relationship="VCVOnlineModel.FK_VCVs_Users" FromRole="User" ToRole="VCV" />
+    <NavigationProperty Name="Classes" Relationship="VCVOnlineModel.FK_Class_Owner_By_Teacher" FromRole="User" ToRole="Class" />
+    <Property Type="String" Name="UserType" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="Activated" />
+  </EntityType>
+  <EntityType Name="VCV">
+    <Key>
+      <PropertyRef Name="VCVId" />
+    </Key>
+    <Property Name="VCVId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="AssignmentId" Type="Int32" />
+    <Property Name="VCVName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Timestamp" Type="DateTime" Precision="3" />
+    <Property Name="VideoName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Attachment1" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Assignment" Relationship="VCVOnlineModel.FK_VCVs_Assignments" FromRole="VCV" ToRole="Assignment" />
+  </EntityType>
+  <Association Name="FK_Assignments_Classes">
+    <End Role="Class" Type="VCVOnlineModel.Class" Multiplicity="0..1" />
+    <End Role="Assignment" Type="VCVOnlineModel.Assignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="ClassId" />
+      </Principal>
+      <Dependent Role="Assignment">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VCVs_Assignments">
+    <End Role="Assignment" Type="VCVOnlineModel.Assignment" Multiplicity="0..1" />
+    <End Role="VCV" Type="VCVOnlineModel.VCV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Assignment">
+        <PropertyRef Name="AssignmentId" />
+      </Principal>
+      <Dependent Role="VCV">
+        <PropertyRef Name="AssignmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_in_Classes">
+    <End Role="Class" Type="VCVOnlineModel.Class" Multiplicity="0..1" />
+    <End Role="User" Type="VCVOnlineModel.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="ClassId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VCVs_Users">
+    <End Role="User" Type="VCVOnlineModel.User" Multiplicity="0..1" />
+    <End Role="VCV" Type="VCVOnlineModel.VCV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="VCV">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Class_Owner_By_Teacher">
+    <End Type="VCVOnlineModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="VCVOnlineModel.Class" Role="Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Class">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Type="Int32" Name="CountryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="CountryName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Classes" Relationship="VCVOnlineModel.FK_Class_Country" FromRole="Country" ToRole="Class" />
+  </EntityType>
+  <EntityType Name="Grade">
+    <Key>
+      <PropertyRef Name="GradeId" />
+    </Key>
+    <Property Type="Int32" Name="GradeId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="GradeName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Classes" Relationship="VCVOnlineModel.FK_Class_Grade" FromRole="Grade" ToRole="Class" />
+  </EntityType>
+  <Association Name="FK_Class_Country">
+    <End Type="VCVOnlineModel.Country" Role="Country" Multiplicity="0..1" />
+    <End Type="VCVOnlineModel.Class" Role="Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="Class">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Class_Grade">
+    <End Type="VCVOnlineModel.Grade" Role="Grade" Multiplicity="0..1" />
+    <End Type="VCVOnlineModel.Class" Role="Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grade">
+        <PropertyRef Name="GradeId" />
+      </Principal>
+      <Dependent Role="Class">
+        <PropertyRef Name="GradeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,8 @@
+﻿@model sBlog.Net.Models.BlogMenuViewModel
+
+<ul id="submenu">
+@foreach (var menu in Model.Pages)
+{
+    @Html.CreatePageLink(menu)
+}
+</ul>

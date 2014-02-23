@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    @Html.GetCommonScriptsAndStyles()
+    @Html.LoadStylesAndScripts(Html.Action("GetBlogTheme", "Blog").ToString())
+</head>
+<body>
+@Html.Partial("AdminLinks")
+<header>
+        <div class="header">
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">
+                    <a href="@Url.Action("Index", "Home")"><img src="@Url.Content("~/Images/MyChatPack_logo.png")", alt="MyChatPack" border="0" /></a>
+
+
+
+                    </p>
+                </div>
+                	<div id="menu">
+		
+        <img id="more-pages" title="more pages" src="@Url.Content("~/Content/Images/arrow.png")" alt="more pages" />
+	</div>
+                <div class="float-right">
+                   @* <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>*@
+                    <nav>
+                        <ul id="menu">
+                            <li><a href="/Home/Index">Home</a></li>
+                            <li><a href="/Home/Technology_in_education">About Us</a></li>
+                            <li><a href="/Home/New_technology_in_education">MyChatPack</a></li>
+                            <li><a href="/Home/eLearning_software">Get MyChatPack</a></li>
+                            <li><a href="/Home/what_is_eLearning">FAQS</a></li>
+                            <li><a href="/Home/technology_for_learning">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        </header>
+        <div id="body" style="width:960px; margin-left: auto ;margin-right: auto ;">
+          <br /><img src="/Blog/Images/Blog.jpg" /><br />  
+        @Html.Action("Pages", "ViewPage")
+          <br />
+
+                @RenderBody()
+            
+
+        </div>
+        <footer>
+            <div style="text-align:center;" class="content-wrapper">
+               <p>Copyright © 2013 - All Rights Reserved  - Virtual Technologies International Limited</p>
+            </div>
+        </footer>
+
+
+
+
+
+    </body>
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-38445526-1']);
+        _gaq.push(['_setDomainName', 'mychatpack.co.nz']);
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+</script>
+
+
+</html>

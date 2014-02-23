@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="388b4a3ffb7c473da0908bf5556021a3" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="VCVOnlineModel.User" Width="1.5" PointX="7.125" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VCVOnlineModel.VCV" Width="1.5" PointX="9.75" PointY="3" IsExpanded="true" />
+        <AssociationConnector Association="VCVOnlineModel.FK_VCVs_Users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="VCVOnlineModel.Country" Width="1.5" PointX="7.25" PointY="1" />
+        <EntityTypeShape EntityType="VCVOnlineModel.Script" Width="1.5" PointX="12.75" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="VCVOnlineModel.FK_Script_User" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="VCVOnlineModel.FK_VCV_Script" />
+        <EntityTypeShape EntityType="VCVOnlineModel.Summary" Width="1.5" PointX="9.875" PointY="10" />
+        <AssociationConnector Association="VCVOnlineModel.FK_Summary_User" />
+        <AssociationConnector Association="VCVOnlineModel.FK_VCV_Summary" />
+        <EntityTypeShape EntityType="VCVOnlineModel.Tran" Width="1.5" PointX="7" PointY="10.75" />
+        <AssociationConnector Association="VCVOnlineModel.FK_Transaction_User" />
+        <EntityTypeShape EntityType="VCVOnlineModel.EmailQueue" Width="1.5" PointX="4.25" PointY="7.75" />
+        <EntityTypeShape EntityType="VCVOnlineModel.Template" Width="1.5" PointX="2.375" PointY="7.75" />
+        <EntityTypeShape EntityType="VCVOnlineModel.EmailSignup" Width="1.5" PointX="0.625" PointY="7.75" />
+        <EntityTypeShape EntityType="VCVOnlineModel.City" Width="1.5" PointX="19.375" PointY="11.875" />
+        <EntityTypeShape EntityType="VCVOnlineModel.ListingPay" Width="1.5" PointX="11.5" PointY="12.875" />
+        <EntityTypeShape EntityType="VCVOnlineModel.ListingType" Width="1.5" PointX="11.75" PointY="9.625" />
+        <EntityTypeShape EntityType="VCVOnlineModel.Suburb" Width="1.5" PointX="16.75" PointY="11.625" />
+        <AssociationConnector Association="VCVOnlineModel.FK_Suburb_City" />
+        <EntityTypeShape EntityType="VCVOnlineModel.Category" Width="1.5" PointX="16.375" PointY="15.75" />
+        <EntityTypeShape EntityType="VCVOnlineModel.SubCategory" Width="1.5" PointX="13.125" PointY="15.625" />
+        <AssociationConnector Association="VCVOnlineModel.FK_SubCategory_Category1" />
+        <EntityTypeShape EntityType="VCVOnlineModel.Listing" Width="1.5" PointX="14.375" PointY="9.625" />
+        <AssociationConnector Association="VCVOnlineModel.FK_Listing_ListingPay" />
+        <AssociationConnector Association="VCVOnlineModel.FK_Listing_ListingType" />
+        <AssociationConnector Association="VCVOnlineModel.FK_Listing_SubCategory" />
+        <AssociationConnector Association="VCVOnlineModel.FK_Listing_Suburb" />
+        <EntityTypeShape EntityType="VCVOnlineModel.WatchList" Width="1.5" PointX="14.5" PointY="6.875" />
+        <AssociationConnector Association="VCVOnlineModel.FK_WatchList_Listing" />
+        <AssociationConnector Association="VCVOnlineModel.FK_WatchList_User" />
+        <EntityTypeShape EntityType="VCVOnlineModel.ListingApplication" Width="2.125" PointX="17.625" PointY="7.25" />
+        <AssociationConnector Association="VCVOnlineModel.FK_ListingApplications_Listing" />
+        <AssociationConnector Association="VCVOnlineModel.FK_ListingApplications_User" />
+        <EntityTypeShape EntityType="VCVOnlineModel.ApplicationStatus" Width="1.5" PointX="21.5" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="VCVOnlineModel.FK_ListingApplications_ApplicationStatus" />
+        <EntityTypeShape EntityType="VCVOnlineModel.EmailTemplate" Width="1.5" PointX="11.5" PointY="1.875" />
+        <EntityTypeShape EntityType="VCVOnlineModel.EmailType" Width="1.5" PointX="10.125" PointY="16.5" />
+        <EntityTypeShape EntityType="VCVOnlineModel.Product" Width="1.5" PointX="4.375" PointY="0.75" />
+        <AssociationConnector Association="VCVOnlineModel.FK_User_Country" />
+        <EntityTypeShape EntityType="VCVOnlineModel.EmailTemplateDetail" Width="1.5" PointX="12.375" PointY="19.25" />
+        <AssociationConnector Association="VCVOnlineModel.FK_EmailTemplate_EmailType" />
+        <EntityTypeShape EntityType="VCVOnlineModel.VCVShared" Width="1.5" PointX="9.75" PointY="19.25" />
+        <AssociationConnector Association="VCVOnlineModel.FK_VCVShared_User" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

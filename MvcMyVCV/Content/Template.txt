@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+        
+        <meta content="text/html; " http-equiv="Content-Type" />
+        <style>
+
+Body{ color: #000000;font:Arial Rounded MT Bold;  background-color:#aeafaf;margin: 0px 0px 0px 0px; }	
+            .name
+            {
+                width: 90%;
+                height: 47px;
+                font: Arial Rounded MT Bold;
+                color: #ffffff;
+            }
+                        
+ 
+        </style>
+ 
+</head>
+<body>
+
+        <table 
+             border="0" cellpadding="0" cellspacing="0" width="100%" style="background-image: url('metal_bg.gif')">
+            <tr>
+                <td style="padding: 10px 15px;" valign="top">
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="800">
+                        <tr>
+                            <td bgcolor="#ffffff">
+                                               
+              
+              <table width="100%">
+                  <tr>
+                      <td width ="100%">
+                          <center><img src="http://www.mychatpack.co.nz/Images/MyChatPack_logo.jpg" 
+                              style="height: 70px; width: 295px" /></center></td>
+                     
+                  </tr>
+
+              </table>
+                            
+                     
+                                <br />
+                                <br />
+                                     
+                                              <center>
+
+                                              <table bgcolor="#023C6A" width = "90%" class="name">
+                                                  <tr>
+                                                      <td align="center" >
+ MyChatPack of <Insert Name HERE>
+                                                      </td>
+                                                  </tr>
+
+              </table>
+                                              
+</center>
+                            
+          
+              <br />
+              <br />
+              <br />
+              <center>
+              <table  bgcolor= "#6A8088" border="0" width ="445px">
+              <tr>
+              <td height="364px">
+      <Insert Link HERE><img alt=""  src="<Insert Image HERE>" 
+                      
+                      style="height: 354px; width: 435px; padding-left: 3px; padding-right: 3px;" 
+                      align="middle" /><Insert Close Link HERE></td></tr>
+</table>
+If this video does not play then please open the attachment
+</center>
+                            
+          
+              <br />
+              <br />
+              <br />
+               <center>
+
+                <table  bgcolor= "#E2F1F6" border="0" width="90%">
+                 <tr>
+                 <td bgcolor="#E2F1F6"  align="left" style="padding: 3px">
+
+<Insert CV HERE>
+
+</td>
+                 
+                 </tr>
+                 </table>
+
+     
+</center>
+<br />&nbsp;
+                            </td>
+                        </tr>
+                        
+                    </table>
+                </td>
+            </tr>
+        </table>
+                
+</body>
+</html>
+

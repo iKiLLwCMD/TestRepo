@@ -1,0 +1,1655 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="VCVOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="ApplicationStatus">
+          <Key>
+            <PropertyRef Name="ApplicationStatusId" />
+          </Key>
+          <Property Name="ApplicationStatusId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmailQueue">
+          <Key>
+            <PropertyRef Name="QueueId" />
+          </Key>
+          <Property Name="QueueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QueueDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="VCVId" Type="int" Nullable="false" />
+          <Property Name="EmailTo" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="EmailFrom" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IsProcessed" Type="bit" Nullable="false" />
+          <Property Name="ProcessedDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="EmailSignup">
+          <Key>
+            <PropertyRef Name="EmailSignupId" />
+          </Key>
+          <Property Name="EmailSignupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="TimeStamp" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmailTemplate">
+          <Key>
+            <PropertyRef Name="EmailTemplateId" />
+          </Key>
+          <Property Name="EmailTemplateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="EmailTemplateName" Type="nvarchar" MaxLength="30" />
+          <Property Name="IsDefault" Type="bit" />
+        </EntityType>
+        <EntityType Name="EmailTemplateDetails">
+          <Key>
+            <PropertyRef Name="EmailTemplateDetailsId" />
+          </Key>
+          <Property Name="EmailTemplateDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailTemplateDetailsName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="EmailTemplateDetailsContent" Type="nvarchar(max)" />
+          <Property Name="EmailTypeId" Type="int" Nullable="false" />
+          <Property Name="EmailTemplateId" Type="int" />
+        </EntityType>
+        <EntityType Name="EmailType">
+          <Key>
+            <PropertyRef Name="EmailTypeId" />
+          </Key>
+          <Property Name="EmailTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Listing">
+          <Key>
+            <PropertyRef Name="ListingId" />
+          </Key>
+          <Property Name="ListingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ListingTitle" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Company" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="SubCategoryId" Type="int" Nullable="false" />
+          <Property Name="ListingTypeId" Type="int" Nullable="false" />
+          <Property Name="ListingPayId" Type="int" Nullable="false" />
+          <Property Name="ListingReference" Type="nvarchar" MaxLength="50" />
+          <Property Name="ListingSummary" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ListingDescription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsAdvertised" Type="bit" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SuburbId" Type="int" Nullable="false" />
+          <Property Name="Image1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Image2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Image3" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailNotificationsEnabled" Type="bit" Nullable="false" />
+          <Property Name="EmailTemplateId" Type="int" />
+          <Property Name="PublicId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Completed" Type="bit" />
+          <Property Name="Fulfilled" Type="bit" />
+          <Property Name="ListedDate" Type="smalldatetime" />
+          <Property Name="ExpiryDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="ListingApplications">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ListingId" Type="int" Nullable="false" />
+          <Property Name="VideoName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Attachment1Id" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attachment1Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Attachment2Id" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attachment2Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Attachment3Id" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attachment3Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="SummaryContent" Type="text" Nullable="false" />
+          <Property Name="IsShortlist" Type="bit" Nullable="false" />
+          <Property Name="IsDeclined" Type="bit" Nullable="false" />
+          <Property Name="IsViewed" Type="bit" Nullable="false" />
+          <Property Name="ApplicationStatusId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ListingPay">
+          <Key>
+            <PropertyRef Name="ListingPayId" />
+          </Key>
+          <Property Name="ListingPayId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PayDescription" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ListingType">
+          <Key>
+            <PropertyRef Name="ListingTypeId" />
+          </Key>
+          <Property Name="ListingTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ListingDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="money" />
+        </EntityType>
+        <EntityType Name="Script">
+          <Key>
+            <PropertyRef Name="ScriptId" />
+          </Key>
+          <Property Name="ScriptId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScriptName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ScriptContent" Type="text" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeStamp" Type="smalldatetime" Nullable="false" />
+          <Property Name="Template" Type="bit" Nullable="false" />
+          <Property Name="Hidden" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="SubCategoryId" />
+          </Key>
+          <Property Name="SubCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubCategoryName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Suburb">
+          <Key>
+            <PropertyRef Name="SuburbId" />
+          </Key>
+          <Property Name="SuburbId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SuburbName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Summary">
+          <Key>
+            <PropertyRef Name="SummaryId" />
+          </Key>
+          <Property Name="SummaryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SummaryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SummaryContent" Type="text" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TimeStamp" Type="smalldatetime" Nullable="false" />
+          <Property Name="Hidden" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Template">
+          <Key>
+            <PropertyRef Name="TemplateId" />
+          </Key>
+          <Property Name="TemplateId" Type="int" Nullable="false" />
+          <Property Name="TemplateDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TemplateContent" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tran">
+          <Key>
+            <PropertyRef Name="TranId" />
+          </Key>
+          <Property Name="TranId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TranType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TranAmount" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Completed" Type="bit" Nullable="false" />
+          <Property Name="TimeStamp" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserPassword" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="100" />
+          <Property Name="Activated" Type="bit" />
+          <Property Name="Completed" Type="bit" />
+          <Property Name="PurchaseDate" Type="smalldatetime" />
+          <Property Name="LastBillingDate" Type="smalldatetime" />
+          <Property Name="NextBillingDate" Type="smalldatetime" />
+          <Property Name="RecurringBillingId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Terms" Type="bit" Nullable="false" />
+          <Property Name="ForgotToken" Type="nvarchar" MaxLength="50" />
+          <Property Name="ForgotDateLimit" Type="smalldatetime" />
+          <Property Name="Removed" Type="bit" Nullable="false" />
+          <Property Name="CountryId" Type="int" />
+        </EntityType>
+        <EntityType Name="VCV">
+          <Key>
+            <PropertyRef Name="VCVId" />
+          </Key>
+          <Property Name="VCVId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="ScriptId" Type="int" />
+          <Property Name="VCVName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Timestamp" Type="datetime" />
+          <Property Name="VideoName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attachment1Id" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attachment1Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Attachment2Id" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attachment2Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Attachment3Id" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attachment3Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="SummaryId" Type="int" />
+          <Property Name="CurrentStep" Type="int" Nullable="false" />
+          <Property Name="Approved" Type="bit" />
+          <Property Name="DeclineReason" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hidden" Type="bit" Nullable="false" />
+          <Property Name="Token" Type="nvarchar" MaxLength="50" />
+          <Property Name="TokenExpiryDate" Type="smalldatetime" />
+          <Property Name="Length" Type="nchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VCVShared">
+          <Key>
+            <PropertyRef Name="VCVSharedId" />
+          </Key>
+          <Property Name="VCVSharedId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VideoName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Attachment1Id" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attachment1Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Attachment2Id" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attachment2Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Attachment3Id" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attachment3Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="SummaryContent" Type="text" Nullable="false" />
+          <Property Name="IsEmail" Type="bit" Nullable="false" />
+          <Property Name="PublicId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WatchList">
+          <Key>
+            <PropertyRef Name="WatchListId" />
+          </Key>
+          <Property Name="WatchListId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ListingId" Type="int" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_EmailTemplate_EmailType">
+          <End Role="EmailType" Type="Self.EmailType" Multiplicity="1" />
+          <End Role="EmailTemplateDetails" Type="Self.EmailTemplateDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmailType">
+              <PropertyRef Name="EmailTypeId" />
+            </Principal>
+            <Dependent Role="EmailTemplateDetails">
+              <PropertyRef Name="EmailTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Listing_ListingPay">
+          <End Role="ListingPay" Type="Self.ListingPay" Multiplicity="1" />
+          <End Role="Listing" Type="Self.Listing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListingPay">
+              <PropertyRef Name="ListingPayId" />
+            </Principal>
+            <Dependent Role="Listing">
+              <PropertyRef Name="ListingPayId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Listing_ListingType">
+          <End Role="ListingType" Type="Self.ListingType" Multiplicity="1" />
+          <End Role="Listing" Type="Self.Listing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListingType">
+              <PropertyRef Name="ListingTypeId" />
+            </Principal>
+            <Dependent Role="Listing">
+              <PropertyRef Name="ListingTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Listing_SubCategory">
+          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="1" />
+          <End Role="Listing" Type="Self.Listing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategory">
+              <PropertyRef Name="SubCategoryId" />
+            </Principal>
+            <Dependent Role="Listing">
+              <PropertyRef Name="SubCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Listing_Suburb">
+          <End Role="Suburb" Type="Self.Suburb" Multiplicity="1" />
+          <End Role="Listing" Type="Self.Listing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suburb">
+              <PropertyRef Name="SuburbId" />
+            </Principal>
+            <Dependent Role="Listing">
+              <PropertyRef Name="SuburbId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListingApplications_ApplicationStatus">
+          <End Role="ApplicationStatus" Type="Self.ApplicationStatus" Multiplicity="1" />
+          <End Role="ListingApplications" Type="Self.ListingApplications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationStatus">
+              <PropertyRef Name="ApplicationStatusId" />
+            </Principal>
+            <Dependent Role="ListingApplications">
+              <PropertyRef Name="ApplicationStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListingApplications_Listing">
+          <End Role="Listing" Type="Self.Listing" Multiplicity="1" />
+          <End Role="ListingApplications" Type="Self.ListingApplications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Listing">
+              <PropertyRef Name="ListingId" />
+            </Principal>
+            <Dependent Role="ListingApplications">
+              <PropertyRef Name="ListingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListingApplications_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="ListingApplications" Type="Self.ListingApplications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ListingApplications">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Script_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Script" Type="Self.Script" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Script">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategory_Category1">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="SubCategory">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Suburb_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Suburb" Type="Self.Suburb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="Suburb">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Summary_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Summary" Type="Self.Summary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Summary">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaction_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Tran" Type="Self.Tran" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Tran">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VCV_Script">
+          <End Role="Script" Type="Self.Script" Multiplicity="0..1" />
+          <End Role="VCV" Type="Self.VCV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Script">
+              <PropertyRef Name="ScriptId" />
+            </Principal>
+            <Dependent Role="VCV">
+              <PropertyRef Name="ScriptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VCV_Summary">
+          <End Role="Summary" Type="Self.Summary" Multiplicity="0..1" />
+          <End Role="VCV" Type="Self.VCV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Summary">
+              <PropertyRef Name="SummaryId" />
+            </Principal>
+            <Dependent Role="VCV">
+              <PropertyRef Name="SummaryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VCVs_Users">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="VCV" Type="Self.VCV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="VCV">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VCVShared_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="VCVShared" Type="Self.VCVShared" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="VCVShared">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WatchList_Listing">
+          <End Role="Listing" Type="Self.Listing" Multiplicity="1" />
+          <End Role="WatchList" Type="Self.WatchList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Listing">
+              <PropertyRef Name="ListingId" />
+            </Principal>
+            <Dependent Role="WatchList">
+              <PropertyRef Name="ListingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WatchList_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="WatchList" Type="Self.WatchList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="WatchList">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VCVOnlineModelStoreContainer">
+          <EntitySet Name="ApplicationStatus" EntityType="Self.ApplicationStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailQueue" EntityType="Self.EmailQueue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailSignup" EntityType="Self.EmailSignup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailTemplate" EntityType="Self.EmailTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailTemplateDetails" EntityType="Self.EmailTemplateDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailType" EntityType="Self.EmailType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Listing" EntityType="Self.Listing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListingApplications" EntityType="Self.ListingApplications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListingPay" EntityType="Self.ListingPay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListingType" EntityType="Self.ListingType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Script" EntityType="Self.Script" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubCategory" EntityType="Self.SubCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Suburb" EntityType="Self.Suburb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Summary" EntityType="Self.Summary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Template" EntityType="Self.Template" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tran" EntityType="Self.Tran" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VCV" EntityType="Self.VCV" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VCVShared" EntityType="Self.VCVShared" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WatchList" EntityType="Self.WatchList" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_EmailTemplate_EmailType" Association="Self.FK_EmailTemplate_EmailType">
+            <End Role="EmailType" EntitySet="EmailType" />
+            <End Role="EmailTemplateDetails" EntitySet="EmailTemplateDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Listing_ListingPay" Association="Self.FK_Listing_ListingPay">
+            <End Role="ListingPay" EntitySet="ListingPay" />
+            <End Role="Listing" EntitySet="Listing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Listing_ListingType" Association="Self.FK_Listing_ListingType">
+            <End Role="ListingType" EntitySet="ListingType" />
+            <End Role="Listing" EntitySet="Listing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Listing_SubCategory" Association="Self.FK_Listing_SubCategory">
+            <End Role="SubCategory" EntitySet="SubCategory" />
+            <End Role="Listing" EntitySet="Listing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Listing_Suburb" Association="Self.FK_Listing_Suburb">
+            <End Role="Suburb" EntitySet="Suburb" />
+            <End Role="Listing" EntitySet="Listing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListingApplications_ApplicationStatus" Association="Self.FK_ListingApplications_ApplicationStatus">
+            <End Role="ApplicationStatus" EntitySet="ApplicationStatus" />
+            <End Role="ListingApplications" EntitySet="ListingApplications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListingApplications_Listing" Association="Self.FK_ListingApplications_Listing">
+            <End Role="Listing" EntitySet="Listing" />
+            <End Role="ListingApplications" EntitySet="ListingApplications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListingApplications_User" Association="Self.FK_ListingApplications_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ListingApplications" EntitySet="ListingApplications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Script_User" Association="Self.FK_Script_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Script" EntitySet="Script" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategory_Category1" Association="Self.FK_SubCategory_Category1">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="SubCategory" EntitySet="SubCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Suburb_City" Association="Self.FK_Suburb_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Suburb" EntitySet="Suburb" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Summary_User" Association="Self.FK_Summary_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Summary" EntitySet="Summary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaction_User" Association="Self.FK_Transaction_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Tran" EntitySet="Tran" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Country" Association="Self.FK_User_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VCV_Script" Association="Self.FK_VCV_Script">
+            <End Role="Script" EntitySet="Script" />
+            <End Role="VCV" EntitySet="VCV" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VCV_Summary" Association="Self.FK_VCV_Summary">
+            <End Role="Summary" EntitySet="Summary" />
+            <End Role="VCV" EntitySet="VCV" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VCVs_Users" Association="Self.FK_VCVs_Users">
+            <End Role="User" EntitySet="User" />
+            <End Role="VCV" EntitySet="VCV" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VCVShared_User" Association="Self.FK_VCVShared_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="VCVShared" EntitySet="VCVShared" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WatchList_Listing" Association="Self.FK_WatchList_Listing">
+            <End Role="Listing" EntitySet="Listing" />
+            <End Role="WatchList" EntitySet="WatchList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WatchList_User" Association="Self.FK_WatchList_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="WatchList" EntitySet="WatchList" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VCVOnlineModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="VCVOnlineEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="VCVOnlineModel.User" />
+          <EntitySet Name="VCVs" EntityType="VCVOnlineModel.VCV" />
+          <AssociationSet Name="FK_VCVs_Users" Association="VCVOnlineModel.FK_VCVs_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="VCV" EntitySet="VCVs" />
+          </AssociationSet>
+          <EntitySet Name="Countries" EntityType="VCVOnlineModel.Country" />
+          <EntitySet Name="Scripts" EntityType="VCVOnlineModel.Script" />
+          <AssociationSet Name="FK_Script_User" Association="VCVOnlineModel.FK_Script_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Script" EntitySet="Scripts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VCV_Script" Association="VCVOnlineModel.FK_VCV_Script">
+            <End Role="Script" EntitySet="Scripts" />
+            <End Role="VCV" EntitySet="VCVs" />
+          </AssociationSet>
+          <EntitySet Name="Summaries" EntityType="VCVOnlineModel.Summary" />
+          <AssociationSet Name="FK_Summary_User" Association="VCVOnlineModel.FK_Summary_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Summary" EntitySet="Summaries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VCV_Summary" Association="VCVOnlineModel.FK_VCV_Summary">
+            <End Role="Summary" EntitySet="Summaries" />
+            <End Role="VCV" EntitySet="VCVs" />
+          </AssociationSet>
+          <EntitySet Name="Trans" EntityType="VCVOnlineModel.Tran" />
+          <AssociationSet Name="FK_Transaction_User" Association="VCVOnlineModel.FK_Transaction_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Tran" EntitySet="Trans" />
+          </AssociationSet>
+          <EntitySet Name="EmailQueues" EntityType="VCVOnlineModel.EmailQueue" />
+          <EntitySet Name="Templates" EntityType="VCVOnlineModel.Template" />
+          <EntitySet Name="EmailSignups" EntityType="VCVOnlineModel.EmailSignup" />
+          <EntitySet Name="Cities" EntityType="VCVOnlineModel.City" />
+          <EntitySet Name="ListingPays" EntityType="VCVOnlineModel.ListingPay" />
+          <EntitySet Name="ListingTypes" EntityType="VCVOnlineModel.ListingType" />
+          <EntitySet Name="Suburbs" EntityType="VCVOnlineModel.Suburb" />
+          <AssociationSet Name="FK_Suburb_City" Association="VCVOnlineModel.FK_Suburb_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Suburb" EntitySet="Suburbs" />
+          </AssociationSet>
+          <EntitySet Name="Categories" EntityType="VCVOnlineModel.Category" />
+          <EntitySet Name="SubCategories" EntityType="VCVOnlineModel.SubCategory" />
+          <AssociationSet Name="FK_SubCategory_Category1" Association="VCVOnlineModel.FK_SubCategory_Category1">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="SubCategory" EntitySet="SubCategories" />
+          </AssociationSet>
+          <EntitySet Name="Listings" EntityType="VCVOnlineModel.Listing" />
+          <AssociationSet Name="FK_Listing_ListingPay" Association="VCVOnlineModel.FK_Listing_ListingPay">
+            <End Role="ListingPay" EntitySet="ListingPays" />
+            <End Role="Listing" EntitySet="Listings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Listing_ListingType" Association="VCVOnlineModel.FK_Listing_ListingType">
+            <End Role="ListingType" EntitySet="ListingTypes" />
+            <End Role="Listing" EntitySet="Listings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Listing_SubCategory" Association="VCVOnlineModel.FK_Listing_SubCategory">
+            <End Role="SubCategory" EntitySet="SubCategories" />
+            <End Role="Listing" EntitySet="Listings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Listing_Suburb" Association="VCVOnlineModel.FK_Listing_Suburb">
+            <End Role="Suburb" EntitySet="Suburbs" />
+            <End Role="Listing" EntitySet="Listings" />
+          </AssociationSet>
+          <EntitySet Name="WatchLists" EntityType="VCVOnlineModel.WatchList" />
+          <AssociationSet Name="FK_WatchList_Listing" Association="VCVOnlineModel.FK_WatchList_Listing">
+            <End Role="Listing" EntitySet="Listings" />
+            <End Role="WatchList" EntitySet="WatchLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WatchList_User" Association="VCVOnlineModel.FK_WatchList_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="WatchList" EntitySet="WatchLists" />
+          </AssociationSet>
+          <EntitySet Name="ListingApplications" EntityType="VCVOnlineModel.ListingApplication" />
+          <AssociationSet Name="FK_ListingApplications_Listing" Association="VCVOnlineModel.FK_ListingApplications_Listing">
+            <End Role="Listing" EntitySet="Listings" />
+            <End Role="ListingApplication" EntitySet="ListingApplications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListingApplications_User" Association="VCVOnlineModel.FK_ListingApplications_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ListingApplication" EntitySet="ListingApplications" />
+          </AssociationSet>
+          <EntitySet Name="ApplicationStatus1" EntityType="VCVOnlineModel.ApplicationStatus" />
+          <AssociationSet Name="FK_ListingApplications_ApplicationStatus" Association="VCVOnlineModel.FK_ListingApplications_ApplicationStatus">
+            <End Role="ApplicationStatu" EntitySet="ApplicationStatus1" />
+            <End Role="ListingApplication" EntitySet="ListingApplications" />
+          </AssociationSet>
+          <EntitySet Name="EmailTemplates" EntityType="VCVOnlineModel.EmailTemplate" />
+          <EntitySet Name="EmailTypes" EntityType="VCVOnlineModel.EmailType" />
+          <EntitySet Name="Products" EntityType="VCVOnlineModel.Product" />
+          <AssociationSet Name="FK_User_Country" Association="VCVOnlineModel.FK_User_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="EmailTemplateDetails" EntityType="VCVOnlineModel.EmailTemplateDetail" />
+          <AssociationSet Name="FK_EmailTemplate_EmailType" Association="VCVOnlineModel.FK_EmailTemplate_EmailType">
+            <End Role="EmailType" EntitySet="EmailTypes" />
+            <End Role="EmailTemplateDetail" EntitySet="EmailTemplateDetails" />
+          </AssociationSet>
+          <EntitySet Name="VCVShareds" EntityType="VCVOnlineModel.VCVShared" />
+          <AssociationSet Name="FK_VCVShared_User" Association="VCVOnlineModel.FK_VCVShared_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="VCVShared" EntitySet="VCVShareds" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UserPassword" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="VCVs" Relationship="VCVOnlineModel.FK_VCVs_Users" FromRole="User" ToRole="VCV" />
+          <Property Type="String" Name="UserType" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Activated" />
+          <NavigationProperty Name="Scripts" Relationship="VCVOnlineModel.FK_Script_User" FromRole="User" ToRole="Script" />
+          <NavigationProperty Name="Summaries" Relationship="VCVOnlineModel.FK_Summary_User" FromRole="User" ToRole="Summary" />
+          <Property Type="Boolean" Name="Completed" />
+          <Property Type="DateTime" Name="PurchaseDate" Precision="0" />
+          <Property Type="DateTime" Name="LastBillingDate" Precision="0" />
+          <Property Type="DateTime" Name="NextBillingDate" Precision="0" />
+          <Property Type="String" Name="RecurringBillingId" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Trans" Relationship="VCVOnlineModel.FK_Transaction_User" FromRole="User" ToRole="Tran" />
+          <Property Type="String" Name="UserEmail" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Terms" Nullable="false" />
+          <Property Type="String" Name="ForgotToken" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ForgotDateLimit" Precision="0" />
+          <Property Type="Boolean" Name="Removed" Nullable="false" />
+          <NavigationProperty Name="WatchLists" Relationship="VCVOnlineModel.FK_WatchList_User" FromRole="User" ToRole="WatchList" />
+          <NavigationProperty Name="ListingApplications" Relationship="VCVOnlineModel.FK_ListingApplications_User" FromRole="User" ToRole="ListingApplication" />
+          <Property Name="CountryId" Type="Int32" />
+          <NavigationProperty Name="Country" Relationship="VCVOnlineModel.FK_User_Country" FromRole="User" ToRole="Country" />
+          <NavigationProperty Name="VCVShareds" Relationship="VCVOnlineModel.FK_VCVShared_User" FromRole="User" ToRole="VCVShared" />
+        </EntityType>
+        <EntityType Name="VCV">
+          <Key>
+            <PropertyRef Name="VCVId" />
+          </Key>
+          <Property Name="VCVId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="VCVName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Timestamp" Type="DateTime" Precision="3" />
+          <Property Name="VideoName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="ScriptId" />
+          <Property Type="String" Name="Attachment1Id" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Attachment1Name" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Attachment2Id" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Attachment2Name" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Attachment3Id" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Attachment3Name" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Script" Relationship="VCVOnlineModel.FK_VCV_Script" FromRole="VCV" ToRole="Script" />
+          <Property Type="Int32" Name="SummaryId" />
+          <NavigationProperty Name="Summary" Relationship="VCVOnlineModel.FK_VCV_Summary" FromRole="VCV" ToRole="Summary" />
+          <Property Type="Int32" Name="CurrentStep" Nullable="false" />
+          <NavigationProperty Name="UserByVCV" Relationship="VCVOnlineModel.FK_VCVs_Users" FromRole="VCV" ToRole="User" />
+          <Property Type="Boolean" Name="Approved" />
+          <Property Type="String" Name="DeclineReason" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Hidden" Nullable="false" />
+          <Property Type="String" Name="Token" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="TokenExpiryDate" Precision="0" />
+          <Property Type="String" Name="Length" Nullable="false" MaxLength="5" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_VCVs_Users">
+          <End Role="User" Type="VCVOnlineModel.User" Multiplicity="0..1" />
+          <End Role="VCV" Type="VCVOnlineModel.VCV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="VCV">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Type="Int32" Name="CountryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CountryName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="VCVOnlineModel.FK_User_Country" FromRole="Country" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Script">
+          <Key>
+            <PropertyRef Name="ScriptId" />
+          </Key>
+          <Property Type="Int32" Name="ScriptId" Nullable="false" />
+          <Property Type="String" Name="ScriptName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ScriptContent" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UserId" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="TimeStamp" Nullable="false" Precision="0" />
+          <Property Type="Boolean" Name="Template" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="VCVOnlineModel.FK_Script_User" FromRole="Script" ToRole="User" />
+          <NavigationProperty Name="VCVs" Relationship="VCVOnlineModel.FK_VCV_Script" FromRole="Script" ToRole="VCV" />
+          <Property Type="Boolean" Name="Hidden" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Script_User">
+          <End Type="VCVOnlineModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="VCVOnlineModel.Script" Role="Script" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Script">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VCV_Script">
+          <End Type="VCVOnlineModel.Script" Role="Script" Multiplicity="0..1" />
+          <End Type="VCVOnlineModel.VCV" Role="VCV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Script">
+              <PropertyRef Name="ScriptId" />
+            </Principal>
+            <Dependent Role="VCV">
+              <PropertyRef Name="ScriptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Summary">
+          <Key>
+            <PropertyRef Name="SummaryId" />
+          </Key>
+          <Property Type="Int32" Name="SummaryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="SummaryName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SummaryContent" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UserId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="TimeStamp" Nullable="false" Precision="0" />
+          <NavigationProperty Name="User" Relationship="VCVOnlineModel.FK_Summary_User" FromRole="Summary" ToRole="User" />
+          <NavigationProperty Name="VCVs" Relationship="VCVOnlineModel.FK_VCV_Summary" FromRole="Summary" ToRole="VCV" />
+          <Property Type="Boolean" Name="Hidden" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Summary_User">
+          <End Type="VCVOnlineModel.User" Role="User" Multiplicity="1" />
+          <End Type="VCVOnlineModel.Summary" Role="Summary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Summary">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VCV_Summary">
+          <End Type="VCVOnlineModel.Summary" Role="Summary" Multiplicity="0..1" />
+          <End Type="VCVOnlineModel.VCV" Role="VCV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Summary">
+              <PropertyRef Name="SummaryId" />
+            </Principal>
+            <Dependent Role="VCV">
+              <PropertyRef Name="SummaryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Tran">
+          <Key>
+            <PropertyRef Name="TranId" />
+          </Key>
+          <Property Type="Int32" Name="TranId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TranType" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="TranAmount" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="String" Name="UserId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="VCVOnlineModel.FK_Transaction_User" FromRole="Tran" ToRole="User" />
+          <Property Type="Boolean" Name="Completed" Nullable="false" />
+          <Property Type="DateTime" Name="TimeStamp" Precision="0" />
+        </EntityType>
+        <Association Name="FK_Transaction_User">
+          <End Type="VCVOnlineModel.User" Role="User" Multiplicity="1" />
+          <End Type="VCVOnlineModel.Tran" Role="Tran" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Tran">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EmailQueue">
+          <Key>
+            <PropertyRef Name="QueueId" />
+          </Key>
+          <Property Type="Int32" Name="QueueId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="QueueDate" Nullable="false" Precision="0" />
+          <Property Type="Int32" Name="VCVId" Nullable="false" />
+          <Property Type="String" Name="EmailTo" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmailFrom" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsProcessed" Nullable="false" />
+          <Property Type="DateTime" Name="ProcessedDate" Precision="0" />
+        </EntityType>
+        <EntityType Name="Template">
+          <Key>
+            <PropertyRef Name="TemplateId" />
+          </Key>
+          <Property Type="Int32" Name="TemplateId" Nullable="false" />
+          <Property Type="String" Name="TemplateDescription" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TemplateContent" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EmailSignup">
+          <Key>
+            <PropertyRef Name="EmailSignupId" />
+          </Key>
+          <Property Type="Int32" Name="EmailSignupId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Email" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Type="DateTime" Name="TimeStamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Type="Int32" Name="CityId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CityName" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Suburbs" Relationship="VCVOnlineModel.FK_Suburb_City" FromRole="City" ToRole="Suburb" />
+        </EntityType>
+        <EntityType Name="ListingPay">
+          <Key>
+            <PropertyRef Name="ListingPayId" />
+          </Key>
+          <Property Type="Int32" Name="ListingPayId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="PayDescription" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Listings" Relationship="VCVOnlineModel.FK_Listing_ListingPay" FromRole="ListingPay" ToRole="Listing" />
+        </EntityType>
+        <EntityType Name="ListingType">
+          <Key>
+            <PropertyRef Name="ListingTypeId" />
+          </Key>
+          <Property Type="Int32" Name="ListingTypeId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ListingDescription" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Listings" Relationship="VCVOnlineModel.FK_Listing_ListingType" FromRole="ListingType" ToRole="Listing" />
+        </EntityType>
+        <EntityType Name="Suburb">
+          <Key>
+            <PropertyRef Name="SuburbId" />
+          </Key>
+          <Property Type="Int32" Name="SuburbId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="SuburbName" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CityId" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="VCVOnlineModel.FK_Suburb_City" FromRole="Suburb" ToRole="City" />
+          <NavigationProperty Name="Listings" Relationship="VCVOnlineModel.FK_Listing_Suburb" FromRole="Suburb" ToRole="Listing" />
+        </EntityType>
+        <Association Name="FK_Suburb_City">
+          <End Type="VCVOnlineModel.City" Role="City" Multiplicity="1" />
+          <End Type="VCVOnlineModel.Suburb" Role="Suburb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="Suburb">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Type="Int32" Name="CategoryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CategoryName" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SubCategories" Relationship="VCVOnlineModel.FK_SubCategory_Category1" FromRole="Category" ToRole="SubCategory" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="SubCategoryId" />
+          </Key>
+          <Property Type="Int32" Name="SubCategoryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="SubCategoryName" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="VCVOnlineModel.FK_SubCategory_Category1" FromRole="SubCategory" ToRole="Category" />
+          <NavigationProperty Name="Listings" Relationship="VCVOnlineModel.FK_Listing_SubCategory" FromRole="SubCategory" ToRole="Listing" />
+        </EntityType>
+        <Association Name="FK_SubCategory_Category1">
+          <End Type="VCVOnlineModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="VCVOnlineModel.SubCategory" Role="SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="SubCategory">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Listing">
+          <Key>
+            <PropertyRef Name="ListingId" />
+          </Key>
+          <Property Type="Int32" Name="ListingId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ListingTitle" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Company" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="SubCategoryId" Nullable="false" />
+          <Property Type="Int32" Name="ListingTypeId" Nullable="false" />
+          <Property Type="Int32" Name="ListingPayId" Nullable="false" />
+          <Property Type="String" Name="ListingReference" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ListingSummary" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ListingDescription" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsAdvertised" Nullable="false" />
+          <Property Type="String" Name="UserId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="SuburbId" Nullable="false" />
+          <NavigationProperty Name="ListingPay" Relationship="VCVOnlineModel.FK_Listing_ListingPay" FromRole="Listing" ToRole="ListingPay" />
+          <NavigationProperty Name="ListingType" Relationship="VCVOnlineModel.FK_Listing_ListingType" FromRole="Listing" ToRole="ListingType" />
+          <NavigationProperty Name="SubCategory" Relationship="VCVOnlineModel.FK_Listing_SubCategory" FromRole="Listing" ToRole="SubCategory" />
+          <NavigationProperty Name="Suburb" Relationship="VCVOnlineModel.FK_Listing_Suburb" FromRole="Listing" ToRole="Suburb" />
+          <Property Type="String" Name="Image1" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Image2" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Image3" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="WatchLists" Relationship="VCVOnlineModel.FK_WatchList_Listing" FromRole="Listing" ToRole="WatchList" />
+          <NavigationProperty Name="ListingApplications" Relationship="VCVOnlineModel.FK_ListingApplications_Listing" FromRole="Listing" ToRole="ListingApplication" />
+          <Property Name="EmailNotificationsEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="EmailTemplateId" Type="Int32" />
+          <Property Name="PublicId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Completed" Type="Boolean" />
+          <Property Name="Fulfilled" Type="Boolean" />
+          <Property Name="ListedDate" Type="DateTime" Precision="0" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <Association Name="FK_Listing_ListingPay">
+          <End Type="VCVOnlineModel.ListingPay" Role="ListingPay" Multiplicity="1" />
+          <End Type="VCVOnlineModel.Listing" Role="Listing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListingPay">
+              <PropertyRef Name="ListingPayId" />
+            </Principal>
+            <Dependent Role="Listing">
+              <PropertyRef Name="ListingPayId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Listing_ListingType">
+          <End Type="VCVOnlineModel.ListingType" Role="ListingType" Multiplicity="1" />
+          <End Type="VCVOnlineModel.Listing" Role="Listing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListingType">
+              <PropertyRef Name="ListingTypeId" />
+            </Principal>
+            <Dependent Role="Listing">
+              <PropertyRef Name="ListingTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Listing_SubCategory">
+          <End Type="VCVOnlineModel.SubCategory" Role="SubCategory" Multiplicity="1" />
+          <End Type="VCVOnlineModel.Listing" Role="Listing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategory">
+              <PropertyRef Name="SubCategoryId" />
+            </Principal>
+            <Dependent Role="Listing">
+              <PropertyRef Name="SubCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Listing_Suburb">
+          <End Type="VCVOnlineModel.Suburb" Role="Suburb" Multiplicity="1" />
+          <End Type="VCVOnlineModel.Listing" Role="Listing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suburb">
+              <PropertyRef Name="SuburbId" />
+            </Principal>
+            <Dependent Role="Listing">
+              <PropertyRef Name="SuburbId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="WatchList">
+          <Key>
+            <PropertyRef Name="WatchListId" />
+          </Key>
+          <Property Type="Int32" Name="WatchListId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ListingId" Nullable="false" />
+          <Property Type="DateTime" Name="Timestamp" Nullable="false" Precision="3" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="String" Name="UserId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Listing" Relationship="VCVOnlineModel.FK_WatchList_Listing" FromRole="WatchList" ToRole="Listing" />
+          <NavigationProperty Name="User" Relationship="VCVOnlineModel.FK_WatchList_User" FromRole="WatchList" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_WatchList_Listing">
+          <End Type="VCVOnlineModel.Listing" Role="Listing" Multiplicity="1" />
+          <End Type="VCVOnlineModel.WatchList" Role="WatchList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Listing">
+              <PropertyRef Name="ListingId" />
+            </Principal>
+            <Dependent Role="WatchList">
+              <PropertyRef Name="ListingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WatchList_User">
+          <End Type="VCVOnlineModel.User" Role="User" Multiplicity="1" />
+          <End Type="VCVOnlineModel.WatchList" Role="WatchList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="WatchList">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ListingApplication">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Type="Int32" Name="ApplicationId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ListingId" Nullable="false" />
+          <Property Type="String" Name="VideoName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Attachment1Id" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Attachment1Name" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Attachment2Id" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Attachment2Name" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Attachment3Id" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Attachment3Name" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="TimeStamp" Nullable="false" Precision="3" />
+          <Property Type="String" Name="SummaryContent" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsShortlist" Nullable="false" />
+          <Property Type="Boolean" Name="IsDeclined" Nullable="false" />
+          <NavigationProperty Name="Listing" Relationship="VCVOnlineModel.FK_ListingApplications_Listing" FromRole="ListingApplication" ToRole="Listing" />
+          <NavigationProperty Name="User" Relationship="VCVOnlineModel.FK_ListingApplications_User" FromRole="ListingApplication" ToRole="User" />
+          <Property Name="IsViewed" Type="Boolean" Nullable="false" />
+          <Property Name="ApplicationStatusId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ApplicationStatu" Relationship="VCVOnlineModel.FK_ListingApplications_ApplicationStatus" FromRole="ListingApplication" ToRole="ApplicationStatu" />
+        </EntityType>
+        <Association Name="FK_ListingApplications_Listing">
+          <End Type="VCVOnlineModel.Listing" Role="Listing" Multiplicity="1" />
+          <End Type="VCVOnlineModel.ListingApplication" Role="ListingApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Listing">
+              <PropertyRef Name="ListingId" />
+            </Principal>
+            <Dependent Role="ListingApplication">
+              <PropertyRef Name="ListingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListingApplications_User">
+          <End Type="VCVOnlineModel.User" Role="User" Multiplicity="1" />
+          <End Type="VCVOnlineModel.ListingApplication" Role="ListingApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ListingApplication">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ApplicationStatus">
+          <Key>
+            <PropertyRef Name="ApplicationStatusId" />
+          </Key>
+          <Property Name="ApplicationStatusId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ListingApplications" Relationship="VCVOnlineModel.FK_ListingApplications_ApplicationStatus" FromRole="ApplicationStatu" ToRole="ListingApplication" />
+        </EntityType>
+        <Association Name="FK_ListingApplications_ApplicationStatus">
+          <End Type="VCVOnlineModel.ApplicationStatus" Role="ApplicationStatu" Multiplicity="1" />
+          <End Type="VCVOnlineModel.ListingApplication" Role="ListingApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationStatu">
+              <PropertyRef Name="ApplicationStatusId" />
+            </Principal>
+            <Dependent Role="ListingApplication">
+              <PropertyRef Name="ApplicationStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EmailTemplate">
+          <Key>
+            <PropertyRef Name="EmailTemplateId" />
+          </Key>
+          <Property Name="EmailTemplateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EmailTemplateName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IsDefault" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="EmailType">
+          <Key>
+            <PropertyRef Name="EmailTypeId" />
+          </Key>
+          <Property Name="EmailTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmailTemplateDetails" Relationship="VCVOnlineModel.FK_EmailTemplate_EmailType" FromRole="EmailType" ToRole="EmailTemplateDetail" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <Association Name="FK_User_Country">
+          <End Type="VCVOnlineModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="VCVOnlineModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EmailTemplateDetail">
+          <Key>
+            <PropertyRef Name="EmailTemplateDetailsId" />
+          </Key>
+          <Property Name="EmailTemplateDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailTemplateDetailsName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="EmailTemplateDetailsContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmailTypeId" Type="Int32" Nullable="false" />
+          <Property Name="EmailTemplateId" Type="Int32" />
+          <NavigationProperty Name="EmailType" Relationship="VCVOnlineModel.FK_EmailTemplate_EmailType" FromRole="EmailTemplateDetail" ToRole="EmailType" />
+        </EntityType>
+        <Association Name="FK_EmailTemplate_EmailType">
+          <End Type="VCVOnlineModel.EmailType" Role="EmailType" Multiplicity="1" />
+          <End Type="VCVOnlineModel.EmailTemplateDetail" Role="EmailTemplateDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmailType">
+              <PropertyRef Name="EmailTypeId" />
+            </Principal>
+            <Dependent Role="EmailTemplateDetail">
+              <PropertyRef Name="EmailTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="VCVShared">
+          <Key>
+            <PropertyRef Name="VCVSharedId" />
+          </Key>
+          <Property Name="VCVSharedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VideoName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attachment1Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attachment1Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Attachment2Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attachment2Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Attachment3Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attachment3Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SummaryContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsEmail" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="VCVOnlineModel.FK_VCVShared_User" FromRole="VCVShared" ToRole="User" />
+          <Property Name="PublicId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_VCVShared_User">
+          <End Type="VCVOnlineModel.User" Role="User" Multiplicity="1" />
+          <End Type="VCVOnlineModel.VCVShared" Role="VCVShared" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="VCVShared">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VCVOnlineModelStoreContainer" CdmEntityContainer="VCVOnlineEntities">
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="VCVOnlineModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Removed" ColumnName="Removed" />
+                <ScalarProperty Name="ForgotDateLimit" ColumnName="ForgotDateLimit" />
+                <ScalarProperty Name="ForgotToken" ColumnName="ForgotToken" />
+                <ScalarProperty Name="Terms" ColumnName="Terms" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="RecurringBillingId" ColumnName="RecurringBillingId" />
+                <ScalarProperty Name="NextBillingDate" ColumnName="NextBillingDate" />
+                <ScalarProperty Name="LastBillingDate" ColumnName="LastBillingDate" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="Completed" ColumnName="Completed" />
+                <ScalarProperty Name="Activated" ColumnName="Activated" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VCVs">
+            <EntityTypeMapping TypeName="VCVOnlineModel.VCV">
+              <MappingFragment StoreEntitySet="VCV">
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="TokenExpiryDate" ColumnName="TokenExpiryDate" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="DeclineReason" ColumnName="DeclineReason" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="CurrentStep" ColumnName="CurrentStep" />
+                <ScalarProperty Name="SummaryId" ColumnName="SummaryId" />
+                <ScalarProperty Name="Attachment3Name" ColumnName="Attachment3Name" />
+                <ScalarProperty Name="Attachment3Id" ColumnName="Attachment3Id" />
+                <ScalarProperty Name="Attachment2Name" ColumnName="Attachment2Name" />
+                <ScalarProperty Name="Attachment2Id" ColumnName="Attachment2Id" />
+                <ScalarProperty Name="Attachment1Name" ColumnName="Attachment1Name" />
+                <ScalarProperty Name="Attachment1Id" ColumnName="Attachment1Id" />
+                <ScalarProperty Name="ScriptId" ColumnName="ScriptId" />
+                <ScalarProperty Name="VCVId" ColumnName="VCVId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="VCVName" ColumnName="VCVName" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="VideoName" ColumnName="VideoName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="VCVOnlineModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Scripts">
+            <EntityTypeMapping TypeName="VCVOnlineModel.Script">
+              <MappingFragment StoreEntitySet="Script">
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="Template" ColumnName="Template" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ScriptContent" ColumnName="ScriptContent" />
+                <ScalarProperty Name="ScriptName" ColumnName="ScriptName" />
+                <ScalarProperty Name="ScriptId" ColumnName="ScriptId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Summaries">
+            <EntityTypeMapping TypeName="VCVOnlineModel.Summary">
+              <MappingFragment StoreEntitySet="Summary">
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SummaryContent" ColumnName="SummaryContent" />
+                <ScalarProperty Name="SummaryName" ColumnName="SummaryName" />
+                <ScalarProperty Name="SummaryId" ColumnName="SummaryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trans">
+            <EntityTypeMapping TypeName="VCVOnlineModel.Tran">
+              <MappingFragment StoreEntitySet="Tran">
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="Completed" ColumnName="Completed" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TranAmount" ColumnName="TranAmount" />
+                <ScalarProperty Name="TranType" ColumnName="TranType" />
+                <ScalarProperty Name="TranId" ColumnName="TranId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailQueues">
+            <EntityTypeMapping TypeName="VCVOnlineModel.EmailQueue">
+              <MappingFragment StoreEntitySet="EmailQueue">
+                <ScalarProperty Name="ProcessedDate" ColumnName="ProcessedDate" />
+                <ScalarProperty Name="IsProcessed" ColumnName="IsProcessed" />
+                <ScalarProperty Name="EmailFrom" ColumnName="EmailFrom" />
+                <ScalarProperty Name="EmailTo" ColumnName="EmailTo" />
+                <ScalarProperty Name="VCVId" ColumnName="VCVId" />
+                <ScalarProperty Name="QueueDate" ColumnName="QueueDate" />
+                <ScalarProperty Name="QueueId" ColumnName="QueueId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Templates">
+            <EntityTypeMapping TypeName="VCVOnlineModel.Template">
+              <MappingFragment StoreEntitySet="Template">
+                <ScalarProperty Name="TemplateContent" ColumnName="TemplateContent" />
+                <ScalarProperty Name="TemplateDescription" ColumnName="TemplateDescription" />
+                <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailSignups">
+            <EntityTypeMapping TypeName="VCVOnlineModel.EmailSignup">
+              <MappingFragment StoreEntitySet="EmailSignup">
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailSignupId" ColumnName="EmailSignupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="VCVOnlineModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListingPays">
+            <EntityTypeMapping TypeName="VCVOnlineModel.ListingPay">
+              <MappingFragment StoreEntitySet="ListingPay">
+                <ScalarProperty Name="PayDescription" ColumnName="PayDescription" />
+                <ScalarProperty Name="ListingPayId" ColumnName="ListingPayId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListingTypes">
+            <EntityTypeMapping TypeName="VCVOnlineModel.ListingType">
+              <MappingFragment StoreEntitySet="ListingType">
+                <ScalarProperty Name="ListingDescription" ColumnName="ListingDescription" />
+                <ScalarProperty Name="ListingTypeId" ColumnName="ListingTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suburbs">
+            <EntityTypeMapping TypeName="VCVOnlineModel.Suburb">
+              <MappingFragment StoreEntitySet="Suburb">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="SuburbName" ColumnName="SuburbName" />
+                <ScalarProperty Name="SuburbId" ColumnName="SuburbId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="VCVOnlineModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCategories">
+            <EntityTypeMapping TypeName="VCVOnlineModel.SubCategory">
+              <MappingFragment StoreEntitySet="SubCategory">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Listings">
+            <EntityTypeMapping TypeName="VCVOnlineModel.Listing">
+              <MappingFragment StoreEntitySet="Listing">
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="ListedDate" ColumnName="ListedDate" />
+                <ScalarProperty Name="Fulfilled" ColumnName="Fulfilled" />
+                <ScalarProperty Name="Completed" ColumnName="Completed" />
+                <ScalarProperty Name="PublicId" ColumnName="PublicId" />
+                <ScalarProperty Name="EmailTemplateId" ColumnName="EmailTemplateId" />
+                <ScalarProperty Name="EmailNotificationsEnabled" ColumnName="EmailNotificationsEnabled" />
+                <ScalarProperty Name="Image3" ColumnName="Image3" />
+                <ScalarProperty Name="Image2" ColumnName="Image2" />
+                <ScalarProperty Name="Image1" ColumnName="Image1" />
+                <ScalarProperty Name="SuburbId" ColumnName="SuburbId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsAdvertised" ColumnName="IsAdvertised" />
+                <ScalarProperty Name="ListingDescription" ColumnName="ListingDescription" />
+                <ScalarProperty Name="ListingSummary" ColumnName="ListingSummary" />
+                <ScalarProperty Name="ListingReference" ColumnName="ListingReference" />
+                <ScalarProperty Name="ListingPayId" ColumnName="ListingPayId" />
+                <ScalarProperty Name="ListingTypeId" ColumnName="ListingTypeId" />
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="ListingTitle" ColumnName="ListingTitle" />
+                <ScalarProperty Name="ListingId" ColumnName="ListingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WatchLists">
+            <EntityTypeMapping TypeName="VCVOnlineModel.WatchList">
+              <MappingFragment StoreEntitySet="WatchList">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="ListingId" ColumnName="ListingId" />
+                <ScalarProperty Name="WatchListId" ColumnName="WatchListId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListingApplications">
+            <EntityTypeMapping TypeName="VCVOnlineModel.ListingApplication">
+              <MappingFragment StoreEntitySet="ListingApplications">
+                <ScalarProperty Name="ApplicationStatusId" ColumnName="ApplicationStatusId" />
+                <ScalarProperty Name="IsViewed" ColumnName="IsViewed" />
+                <ScalarProperty Name="IsDeclined" ColumnName="IsDeclined" />
+                <ScalarProperty Name="IsShortlist" ColumnName="IsShortlist" />
+                <ScalarProperty Name="SummaryContent" ColumnName="SummaryContent" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="Attachment3Name" ColumnName="Attachment3Name" />
+                <ScalarProperty Name="Attachment3Id" ColumnName="Attachment3Id" />
+                <ScalarProperty Name="Attachment2Name" ColumnName="Attachment2Name" />
+                <ScalarProperty Name="Attachment2Id" ColumnName="Attachment2Id" />
+                <ScalarProperty Name="Attachment1Name" ColumnName="Attachment1Name" />
+                <ScalarProperty Name="Attachment1Id" ColumnName="Attachment1Id" />
+                <ScalarProperty Name="VideoName" ColumnName="VideoName" />
+                <ScalarProperty Name="ListingId" ColumnName="ListingId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationStatus1">
+            <EntityTypeMapping TypeName="VCVOnlineModel.ApplicationStatus">
+              <MappingFragment StoreEntitySet="ApplicationStatus">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ApplicationStatusId" ColumnName="ApplicationStatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailTemplates">
+            <EntityTypeMapping TypeName="VCVOnlineModel.EmailTemplate">
+              <MappingFragment StoreEntitySet="EmailTemplate">
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="EmailTemplateName" ColumnName="EmailTemplateName" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="EmailTemplateId" ColumnName="EmailTemplateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailTypes">
+            <EntityTypeMapping TypeName="VCVOnlineModel.EmailType">
+              <MappingFragment StoreEntitySet="EmailType">
+                <ScalarProperty Name="EmailType1" ColumnName="EmailType" />
+                <ScalarProperty Name="EmailTypeId" ColumnName="EmailTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="VCVOnlineModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailTemplateDetails">
+            <EntityTypeMapping TypeName="VCVOnlineModel.EmailTemplateDetail">
+              <MappingFragment StoreEntitySet="EmailTemplateDetails">
+                <ScalarProperty Name="EmailTemplateId" ColumnName="EmailTemplateId" />
+                <ScalarProperty Name="EmailTypeId" ColumnName="EmailTypeId" />
+                <ScalarProperty Name="EmailTemplateDetailsContent" ColumnName="EmailTemplateDetailsContent" />
+                <ScalarProperty Name="EmailTemplateDetailsName" ColumnName="EmailTemplateDetailsName" />
+                <ScalarProperty Name="EmailTemplateDetailsId" ColumnName="EmailTemplateDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VCVShareds">
+            <EntityTypeMapping TypeName="VCVOnlineModel.VCVShared">
+              <MappingFragment StoreEntitySet="VCVShared">
+                <ScalarProperty Name="PublicId" ColumnName="PublicId" />
+                <ScalarProperty Name="IsEmail" ColumnName="IsEmail" />
+                <ScalarProperty Name="SummaryContent" ColumnName="SummaryContent" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="Attachment3Name" ColumnName="Attachment3Name" />
+                <ScalarProperty Name="Attachment3Id" ColumnName="Attachment3Id" />
+                <ScalarProperty Name="Attachment2Name" ColumnName="Attachment2Name" />
+                <ScalarProperty Name="Attachment2Id" ColumnName="Attachment2Id" />
+                <ScalarProperty Name="Attachment1Name" ColumnName="Attachment1Name" />
+                <ScalarProperty Name="Attachment1Id" ColumnName="Attachment1Id" />
+                <ScalarProperty Name="VideoName" ColumnName="VideoName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="VCVSharedId" ColumnName="VCVSharedId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="vcv">
+        <EntityTypeShape EntityType="VCVOnlineModel.Assignment" Width="1.5" PointX="3" PointY="1.375" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="VCVOnlineModel.Class" Width="1.5" PointX="0.75" PointY="2.875" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="VCVOnlineModel.User" Width="1.5" PointX="3" PointY="4.125" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="VCVOnlineModel.VCV" Width="1.5" PointX="5.25" PointY="2.625" Height="2.5571907552083317" IsExpanded="true" />
+        <AssociationConnector Association="VCVOnlineModel.FK_Assignments_Classes" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.1151432291666667" />
+          <ConnectorPoint PointX="3" PointY="3.1151432291666667" />
+        </AssociationConnector>
+        <AssociationConnector Association="VCVOnlineModel.FK_VCVs_Assignments" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="2.9901432291666667" />
+          <ConnectorPoint PointX="5.25" PointY="2.9901432291666667" />
+        </AssociationConnector>
+        <AssociationConnector Association="VCVOnlineModel.FK_Users_in_Classes" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="4.5862939453125" />
+          <ConnectorPoint PointX="3" PointY="4.5862939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="VCVOnlineModel.FK_VCVs_Users" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="4.6535953776041659" />
+          <ConnectorPoint PointX="5.25" PointY="4.6535953776041659" />
+        </AssociationConnector>
+        <AssociationConnector Association="VCVOnlineModel.FK_Class_Owner_By_Teacher" ManuallyRouted="false">
+          <ConnectorPoint PointX="3" PointY="4.29314697265625" />
+          <ConnectorPoint PointX="2.25" PointY="4.29314697265625" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
